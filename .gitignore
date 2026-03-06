@@ -1,0 +1,26 @@
+# macOS
+.DS_Store
+*.swp
+
+# Backend — Maven build output
+backend/target/
+backend/.mvn/
+!backend/.mvn/wrapper/
+
+# Frontend — Node modules and build output
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# IDE
+.idea/
+*.iml
+.vscode/settings.json
+
+# Logs
+*.log
+/tmp/
+
+# Python cache
+__pycache__/
+*.pyc

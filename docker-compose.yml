@@ -1,0 +1,26 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./maplewood_school.sqlite:/app/maplewood_school.sqlite
+    environment:
+      - DB_URL=jdbc:sqlite:/app/maplewood_school.sqlite
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:8080/api/courses"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+
+  frontend:
+    build:
+      context: frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80"
+    depends_on:
+      backend:
+        condition: service_healthy
