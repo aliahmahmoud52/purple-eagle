@@ -85,5 +85,3 @@ fullstack-challenge/
 ```
 
 ---
-
-**Questions?** Email: <DL-eBay-Data-Productization@ebay.com>
