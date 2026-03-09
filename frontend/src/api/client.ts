@@ -12,6 +12,9 @@ export const coursesApi = {
 };
 
 export const studentsApi = {
+  login: (email: string, studentId: number) =>
+    api.post<StudentProfile>('/students/login', { email, studentId }).then(r => r.data),
+
   getProfile: (id: number) =>
     api.get<StudentProfile>(`/students/${id}`).then(r => r.data),
 };

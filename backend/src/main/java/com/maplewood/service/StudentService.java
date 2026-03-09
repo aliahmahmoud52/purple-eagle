@@ -23,6 +23,14 @@ public class StudentService {
         this.historyRepository = historyRepository;
     }
 
+    public StudentProfileDTO login(String email, Long studentId) {
+        Student student = studentRepository.findById(studentId).orElse(null);
+        if (student == null || !student.getEmail().equalsIgnoreCase(email)) {
+            throw new RuntimeException("Invalid credentials.");
+        }
+        return getStudentProfile(studentId);
+    }
+
     public StudentProfileDTO getStudentProfile(Long studentId) {
         Student student = studentRepository.findById(studentId)
                 .orElseThrow(() -> new RuntimeException("Student not found: " + studentId));
